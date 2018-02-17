@@ -51,6 +51,10 @@ subnet_ip_start = 200  #Define starting last octet of the subnet range to begin 
 
 Vagrant.configure(2) do |config|
 
+  config.hostmanager.enabled = true
+  config.hostmanager.manage_host = true
+  config.vm.network "public_network",  bridge: "enp6s0f0"
+
   #Iterate over nodes
   (1..N).each do |node_id|
     nid = (node_id - 1)
